@@ -4,11 +4,8 @@
  * 参考：https://webkaru.net/clang/binary-to-decimal/
  */
 #include <stdio.h>
-// #include <math.h>
 #include <stdlib.h>
-// #include <conio.h>
 #include <string.h>
-// #include <time.h>
 #include <unistd.h>
 
  void dispTopWindow(void);
@@ -17,7 +14,10 @@
  void mode2(void);
  void wait(void);
  int beki(int, int);
+ int isDecimalElements(char);
+ int toBinary(int);
  
+ // main関数
 int main(void)
 {
     int mode = 0;
@@ -75,18 +75,12 @@ int selectMode(void)
 // 2進数→10進数
 void mode1(void)
 {
-    int binary;
-    int decimal;
-    int base;
-    int flag;
-    char header1;
-    char header2;
     char str[256];
     char emzansi;
     int res;
 
     printf("Enter binary number.\n");
-    printf("If you wanna exit this mode, enter temp.\n");
+    printf("If you wanna exit this mode, enter q.\n");
 
     while(1)
     {
@@ -99,6 +93,7 @@ void mode1(void)
 
         scanf("%s", str);
         printf("%s\n", str);
+        printf("%lu\n", strlen(str));
 
         // mode1の終了
         if(strncmp("q", &str[0], 1)==0)
@@ -149,24 +144,95 @@ void mode1(void)
 // 10進数→2進数
 void mode2(void)
 {
-    int binary;
-    int decimal = 0;
-    int base = 1;
+    char str[256];
+    char emzansi;
+    int res;
 
-    /* 2進数の入力 */
-    // printf("If you wanna exit this mode, enter 2.\n");
-    printf("Enter binary number  = ");
-    scanf("%d", &binary);
+    printf("Enter binary number.\n");
+    printf("If you wanna exit this mode, enter q.\n");
 
-    /* 2進数を10進数に変換 */
-    while(binary>0){
-        decimal = decimal + ( binary % 10 ) * base;
-        binary = binary / 10;
-        base = base * 2;
+    while(1)
+    {
+        // 2進数の入力
+        printf("Enter decimal number  = ");
+
+        scanf("%s", str);
+        printf("%s\n", str);
+        printf("%lu\n", strlen(str));
+
+        // mode1の終了
+        if(strncmp("q", &str[0], 1)==0)
+        {
+            break;
+        }
+
+        // エラーチェック
+        // ２文字以下
+        if(strlen(str)<=2)
+        {
+            printf("Check the formats.\n");
+            continue;
+        }
+
+        // フォーマットに従っているのか？
+        if(strncmp("0", &str[0], 1)!=0)
+        {
+            printf("str[0] Check the formats.\n");
+            continue;
+        }
+        if(strncmp("d", &str[1], 1)!=0)
+        {
+            printf("str[1] Check the formats.\n");
+            continue;
+        }
+        for (int i=2; i<strlen(str); i++)
+        {
+            if(isDecimalElements(str[i])==1)
+            {
+                printf("Check the formats.\n");
+                continue;
+            }
+        }
+
+        // 10進数から2進数への変換
+        res = 0;
+        for (int i=2; i<strlen(str); i++)
+        {
+            res = res + beki(10, strlen(str)-i-1);
+        }
+
+
+
+        printf("%d\n", res);
+
+    }
+}
+
+// 10進数の構成要素かどうかを判断
+// 0: 0〜9のどれかの数字です
+// 1: それ以外
+int isDecimalElements(char elem)
+{
+    // char elems[] = {"0", "1", "2", "3", "4", "5", "6", "7", "8", "9"};
+    char elems[] = "0123456789";
+    for(int i=0; i<10; i++)
+    {
+        if(strncmp(&elems[i], &elem, 1)==0){
+            return 0;
+        }
     }
 
-    /* 変換した2進数の出力 */
-    printf("Decimal number = %d\n", decimal);
+    return 1;
+}
+
+// 10進数から2進数へ変換する関数
+int toBinary(int dicimalNum)
+{
+    int a,b;
+    while(dicimalNum==0)
+    {
+        
+    }
 }
 
 // 累乗の計算
