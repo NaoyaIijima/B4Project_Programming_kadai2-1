@@ -92,10 +92,19 @@ void mode1(void)
     {
         // 2進数の入力
         printf("Enter binary number  = ");
-        // scanf("%c%c%d", &header1, &header2, &binary);
-        scanf("%s %c", str, &emzansi);
+
+        // scanf("%s %c", str, &emzansi);
+        // printf("%s\n", str);
+        // printf("%c\n", emzansi);
+
+        scanf("%s", str);
         printf("%s\n", str);
-        printf("%c\n", emzansi);
+
+        // mode1の終了
+        if(strncmp("q", &str[0], 1)==0)
+        {
+            break;
+        }
 
         // エラーチェック
         // ２文字以下
@@ -134,19 +143,7 @@ void mode1(void)
 
         printf("%d\n", res);
 
-
     }
-}
-
-int beki(int tei, int sisu)
-{
-    int res = 1;
-    for(int i=0; i<sisu; i++)
-    {
-        res = res * tei;
-    }
-    return res;
-    
 }
 
 // 10進数→2進数
@@ -172,14 +169,15 @@ void mode2(void)
     printf("Decimal number = %d\n", decimal);
 }
 
-// //画面を入力があるまでとめる//
-// void wait()
-// {
-// 	while (1)
-// 	{
-// 		if (kbhit())//キーボードの入力をまつ//
-// 		{
-// 			break;
-// 		}
-// 	}
-// }
+// 累乗の計算
+// math.hのpowで実装されているが，double型で返されるため作った
+int beki(int tei, int sisu)
+{
+    int res = 1;
+    for(int i=0; i<sisu; i++)
+    {
+        res = res * tei;
+    }
+    return res;
+    
+}
