@@ -81,6 +81,7 @@ void mode1(void)
     char header1;
     char header2;
     char str[256];
+    char emzansi;
 
     printf("Enter binary number.\n");
     printf("If you wanna exit this mode, enter temp.\n");
@@ -90,11 +91,17 @@ void mode1(void)
         // 2進数の入力
         printf("Enter binary number  = ");
         // scanf("%c%c%d", &header1, &header2, &binary);
-        scanf("%s", str);
+        scanf("%s %c", str, &emzansi);
         printf("%s\n", str);
+        printf("%c\n", emzansi);
 
         // エラーチェック
         // ２文字以下
+        if(strlen(str)<=2)
+        {
+            printf("Check the formats.\n");
+            continue;
+        }
 
         // フォーマットに従っているのか？
         if(strncmp("0", &str[0], 1)!=0)
@@ -112,7 +119,7 @@ void mode1(void)
             if(strncmp("0", &str[i], 1)!=0 && strncmp("1", &str[i], 1)!=0)
             {
                 printf("Check the formats.\n");
-                printf("%d, %d\n", strncmp("0", &str[i], 1), strncmp("1", &str[i], 1));
+                // printf("%d, %d\n", strncmp("0", &str[i], 1), strncmp("1", &str[i], 1));
                 // flag = 1;
             }
         }
