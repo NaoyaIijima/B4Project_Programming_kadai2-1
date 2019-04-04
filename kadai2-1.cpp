@@ -16,6 +16,7 @@
  void mode1(void);
  void mode2(void);
  void wait(void);
+ int beki(int, int);
  
 int main(void)
 {
@@ -82,6 +83,7 @@ void mode1(void)
     char header2;
     char str[256];
     char emzansi;
+    int res;
 
     printf("Enter binary number.\n");
     printf("If you wanna exit this mode, enter temp.\n");
@@ -107,47 +109,44 @@ void mode1(void)
         if(strncmp("0", &str[0], 1)!=0)
         {
             printf("str[0] Check the formats.\n");
-            // flag = 1;
+            continue;
         }
         if(strncmp("b", &str[1], 1)!=0)
         {
             printf("str[1] Check the formats.\n");
-            // flag = 1;
+            continue;
         }
         for (int i=2; i<strlen(str); i++)
         {
             if(strncmp("0", &str[i], 1)!=0 && strncmp("1", &str[i], 1)!=0)
             {
                 printf("Check the formats.\n");
-                // printf("%d, %d\n", strncmp("0", &str[i], 1), strncmp("1", &str[i], 1));
-                // flag = 1;
+                continue;
             }
         }
 
-        // sleep(10);
+        // 2進数から10進数への変換
+        res = 0;
+        for (int i=2; i<strlen(str); i++)
+        {
+            res = res + beki(2, strlen(str)-i-1);
+        }
 
-        // if(flag==1){ break; }
+        printf("%d\n", res);
 
-        
 
-        // if(header1!='0'){ break; }
-        // if(header2!='b'){ break; }
-
-        // // 2進数を10進数に変換
-        // decimal = 0;
-        // base = 1;
-
-        // while(binary>0)
-        // {
-        //     decimal = decimal + ( binary % 10 ) * base;
-        //     binary = binary / 10;
-        //     base = base * 2;
-        // }
-
-        // // 変換した2進数の出力
-        // printf("Decimal number = %d\n", decimal);
-        // printf("\n");
     }
+}
+
+int beki(int tei, int sisu)
+{
+    int res = 1;
+    for(int i=0; i<sisu; i++)
+    {
+        res = res * tei;
+    }
+    return res;
+    
 }
 
 // 10進数→2進数
