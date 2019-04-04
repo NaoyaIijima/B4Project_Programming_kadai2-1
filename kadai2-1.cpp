@@ -6,7 +6,7 @@
 #include <stdio.h>
 // #include <math.h>
 #include <stdlib.h>
-#include <conio.h>
+// #include <conio.h>
 #include <string.h>
 // #include <time.h>
 #include <unistd.h>
@@ -90,25 +90,25 @@ void mode1(void)
         // 2進数の入力
         printf("Enter binary number  = ");
         // scanf("%c%c%d", &header1, &header2, &binary);
-        scanf("%s", &str);
+        scanf("%s", str);
 
         // エラーチェック
         // flag = 0;
         if(str[0]!='0')
         {
-            printf("Check the formats.");
+            printf("Check the formats.\n");
             // flag = 1;
         }
         if(str[1]!='b')
         {
-            printf("Check the formats.");
+            printf("Check the formats.\n");
             // flag = 1;
         }
         for (int i=2; i<strlen(str); i++)
         {
             if(str[i]!='0' || str[i]!='1')
             {
-                printf("Check the formats.");
+                printf("Check the formats.\n");
                 // flag = 1;
             }
         }
@@ -162,14 +162,14 @@ void mode2(void)
     printf("Decimal number = %d\n", decimal);
 }
 
-//画面を入力があるまでとめる//
-void wait()
-{
-	while (1)
-	{
-		if (kbhit())//キーボードの入力をまつ//
-		{
-			break;
-		}
-	}
-}
+// //画面を入力があるまでとめる//
+// void wait()
+// {
+// 	while (1)
+// 	{
+// 		if (kbhit())//キーボードの入力をまつ//
+// 		{
+// 			break;
+// 		}
+// 	}
+// }
