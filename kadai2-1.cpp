@@ -7,6 +7,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include <unistd.h>
+#include <math.h>
 
  void dispTopWindow(void);
  int selectMode(void);
@@ -201,7 +202,7 @@ void mode2(void)
             res = res + beki(10, strlen(str)-i-1);
         }
 
-
+        res = toBinary(res);
 
         printf("%d\n", res);
 
@@ -228,11 +229,13 @@ int isDecimalElements(char elem)
 // 10進数から2進数へ変換する関数
 int toBinary(int dicimalNum)
 {
-    int a,b;
-    while(dicimalNum==0)
+    int ans = 0;
+    for (int i = 0; dicimalNum>0 ; i++)
     {
-        
+        ans = ans+(dicimalNum%2)*pow(10,i);
+        dicimalNum = dicimalNum/2;
     }
+    return ans;
 }
 
 // 累乗の計算
