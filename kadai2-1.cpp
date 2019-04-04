@@ -91,24 +91,28 @@ void mode1(void)
         printf("Enter binary number  = ");
         // scanf("%c%c%d", &header1, &header2, &binary);
         scanf("%s", str);
+        printf("%s\n", str);
 
         // エラーチェック
-        // flag = 0;
-        if(str[0]!='0')
+        // ２文字以下
+
+        // フォーマットに従っているのか？
+        if(strncmp("0", &str[0], 1)!=0)
         {
-            printf("Check the formats.\n");
+            printf("str[0] Check the formats.\n");
             // flag = 1;
         }
-        if(str[1]!='b')
+        if(strncmp("b", &str[1], 1)!=0)
         {
-            printf("Check the formats.\n");
+            printf("str[1] Check the formats.\n");
             // flag = 1;
         }
         for (int i=2; i<strlen(str); i++)
         {
-            if(str[i]!='0' || str[i]!='1')
+            if(strncmp("0", &str[i], 1)!=0 && strncmp("1", &str[i], 1)!=0)
             {
                 printf("Check the formats.\n");
+                printf("%d, %d\n", strncmp("0", &str[i], 1), strncmp("1", &str[i], 1));
                 // flag = 1;
             }
         }
