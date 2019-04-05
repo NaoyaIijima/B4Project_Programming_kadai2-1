@@ -16,7 +16,7 @@
  void wait(void);
  int beki(int, int);
  int isDecimalElements(char);
- void toBinary(int, char[]);
+//  void toBinary(int, char[]);
  
  // main関数
 int main(void)
@@ -145,112 +145,112 @@ void mode1(void)
 // 10進数→2進数
 void mode2(void)
 {
-    char str[256];
-    char emzansi;
-    int res;
-    char chres[256];
+//     char str[256];
+//     char emzansi;
+//     int res;
+//     char chres[256];
 
-    printf("Enter binary number.\n");
-    printf("If you wanna exit this mode, enter q.\n");
+//     printf("Enter binary number.\n");
+//     printf("If you wanna exit this mode, enter q.\n");
 
-    while(1)
-    {
-        // 2進数の入力
-        printf("Enter decimal number  = ");
+//     while(1)
+//     {
+//         // 2進数の入力
+//         printf("Enter decimal number  = ");
 
-        scanf("%s", str);
-        printf("%s\n", str);
-        printf("%lu\n", strlen(str));
+//         scanf("%s", str);
+//         printf("%s\n", str);
+//         printf("%lu\n", strlen(str));
 
-        // mode1の終了
-        if(strncmp("q", &str[0], 1)==0)
-        {
-            break;
-        }
+//         // mode1の終了
+//         if(strncmp("q", &str[0], 1)==0)
+//         {
+//             break;
+//         }
 
-        // エラーチェック
-        // ２文字以下
-        if(strlen(str)<=2)
-        {
-            printf("Check the formats.\n");
-            continue;
-        }
+//         // エラーチェック
+//         // ２文字以下
+//         if(strlen(str)<=2)
+//         {
+//             printf("Check the formats.\n");
+//             continue;
+//         }
 
-        // フォーマットに従っているのか？
-        if(strncmp("0", &str[0], 1)!=0)
-        {
-            printf("str[0] Check the formats.\n");
-            continue;
-        }
-        if(strncmp("d", &str[1], 1)!=0)
-        {
-            printf("str[1] Check the formats.\n");
-            continue;
-        }
-        for (int i=2; i<strlen(str); i++)
-        {
-            if(isDecimalElements(str[i])==1)
-            {
-                printf("Check the formats.\n");
-                continue;
-            }
-        }
+//         // フォーマットに従っているのか？
+//         if(strncmp("0", &str[0], 1)!=0)
+//         {
+//             printf("str[0] Check the formats.\n");
+//             continue;
+//         }
+//         if(strncmp("d", &str[1], 1)!=0)
+//         {
+//             printf("str[1] Check the formats.\n");
+//             continue;
+//         }
+//         for (int i=2; i<strlen(str); i++)
+//         {
+//             if(isDecimalElements(str[i])==1)
+//             {
+//                 printf("Check the formats.\n");
+//                 continue;
+//             }
+//         }
 
-        // 10進数から2進数への変換
-        res = 0;
-        for (int i=2; i<strlen(str); i++)
-        {
-            res = res + (str[i] - '0') * beki(10, strlen(str)-i-1);
-        }
+//         // 10進数から2進数への変換
+//         res = 0;
+//         for (int i=2; i<strlen(str); i++)
+//         {
+//             res = res + (str[i] - '0') * beki(10, strlen(str)-i-1);
+//         }
 
-        printf("\n");
-        printf("%d\n", res);
+//         printf("\n");
+//         printf("%d\n", res);
 
-        toBinary(res, &chres);
+//         toBinary(res, &chres);
 
-        printf("%d\n", res);
-        printf("%s\n", chres);
+//         printf("%d\n", res);
+//         printf("%s\n", chres);
 
-    }
+//     }
+// }
+
+// // 10進数の構成要素かどうかを判断
+// // 0: 0〜9のどれかの数字です
+// // 1: それ以外
+// int isDecimalElements(char elem)
+// {
+//     char elems[] = "0123456789";
+//     for(int i=0; i<10; i++)
+//     {
+//         if(strncmp(&elems[i], &elem, 1)==0){
+//             return 0;
+//         }
+//     }
+
+//     return 1;
+
 }
 
-// 10進数の構成要素かどうかを判断
-// 0: 0〜9のどれかの数字です
-// 1: それ以外
-int isDecimalElements(char elem)
-{
-    // char elems[] = {"0", "1", "2", "3", "4", "5", "6", "7", "8", "9"};
-    char elems[] = "0123456789";
-    for(int i=0; i<10; i++)
-    {
-        if(strncmp(&elems[i], &elem, 1)==0){
-            return 0;
-        }
-    }
+// // 10進数から2進数へ変換する関数
+// void toBinary(int decimalNum, char[] chres)
+// {
+//     for (int i = 0; decimalNum>0 ; i++)
+//     {
+//         // ans = ans + (decimalNum%2)*pow(10, i);
+//         strcat(chres, char(decimalNum%2));
+//         decimalNum = decimalNum/2;
+//     }
 
-    return 1;
-}
-
-// 10進数から2進数へ変換する関数
-void toBinary(int decimalNum, char[] chres)
-{
-    for (int i = 0; decimalNum>0 ; i++)
-    {
-        // ans = ans + (decimalNum%2)*pow(10, i);
-        
-        decimalNum = decimalNum/2;
-    }
-
-    // int ans = 0;
+//     // int ans = 0;
     
-    // for (int i = 0; decimalNum>0 ; i++)
-    // {
-    //     ans = ans + (decimalNum%2)*pow(10, i);
-    //     decimalNum = decimalNum/2;
-    // }
+//     // for (int i = 0; decimalNum>0 ; i++)
+//     // {
+//     //     ans = ans + (decimalNum%2)*pow(10, i);
+//     //     decimalNum = decimalNum/2;
+//     // }
 
-    // return ans;
-}
+//     // return ans;
+// }
 
 // 累乗の計算
 // math.hのpowで実装されているが，double型で返されるため作った
