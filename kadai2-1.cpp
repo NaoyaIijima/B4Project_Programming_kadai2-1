@@ -16,7 +16,7 @@
  void wait(void);
  int beki(int, int);
  int isDecimalElements(char);
- int toBinary(int);
+ void toBinary(int, char[]);
  
  // main関数
 int main(void)
@@ -148,6 +148,7 @@ void mode2(void)
     char str[256];
     char emzansi;
     int res;
+    char chres[256];
 
     printf("Enter binary number.\n");
     printf("If you wanna exit this mode, enter q.\n");
@@ -199,12 +200,16 @@ void mode2(void)
         res = 0;
         for (int i=2; i<strlen(str); i++)
         {
-            res = res + beki(10, strlen(str)-i-1);
+            res = res + (str[i] - '0') * beki(10, strlen(str)-i-1);
         }
 
-        res = toBinary(res);
+        printf("\n");
+        printf("%d\n", res);
+
+        toBinary(res, &chres);
 
         printf("%d\n", res);
+        printf("%s\n", chres);
 
     }
 }
@@ -227,15 +232,24 @@ int isDecimalElements(char elem)
 }
 
 // 10進数から2進数へ変換する関数
-int toBinary(int dicimalNum)
+void toBinary(int decimalNum, char[] chres)
 {
-    int ans = 0;
-    for (int i = 0; dicimalNum>0 ; i++)
+    for (int i = 0; decimalNum>0 ; i++)
     {
-        ans = ans+(dicimalNum%2)*pow(10,i);
-        dicimalNum = dicimalNum/2;
+        // ans = ans + (decimalNum%2)*pow(10, i);
+        
+        decimalNum = decimalNum/2;
     }
-    return ans;
+
+    // int ans = 0;
+    
+    // for (int i = 0; decimalNum>0 ; i++)
+    // {
+    //     ans = ans + (decimalNum%2)*pow(10, i);
+    //     decimalNum = decimalNum/2;
+    // }
+
+    // return ans;
 }
 
 // 累乗の計算
