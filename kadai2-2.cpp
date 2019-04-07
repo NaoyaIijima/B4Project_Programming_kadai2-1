@@ -42,10 +42,13 @@ void mode1(void)
     int res;
     int num1, num2;
     int c;
+    int flag;
 
     while(1)
     {
         emzansi = 'a';
+        flag = 0;
+
         // 2進数の入力
         printf("Enter binary number  = ");
 
@@ -111,6 +114,8 @@ void mode1(void)
         }
         printf("num1=%d\n", num1);
 
+
+
         // オペランド2
         // フォーマットに従っているのか？
         if(strncmp("0", &str[c+1], 1)!=0)
@@ -129,8 +134,13 @@ void mode1(void)
             if(strncmp("0", &str[i], 1)!=0 && strncmp("1", &str[i], 1)!=0)
             {
                 printf("str: Check the formats.\n");
+                flag = 1;
                 continue;
             }
+        }
+        if(flag==1)
+        {
+            break;
         }
 
         // 2進数から10進数への変換
