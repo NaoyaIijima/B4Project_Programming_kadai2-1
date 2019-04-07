@@ -9,13 +9,13 @@
 #include <unistd.h>
 #include <math.h>
 
- void dispTopWindow(void);
- int selectMode(void);
- void mode1(void);
- void mode2(void);
- void wait(void);
- int beki(int, int);
- int isDecimalElements(char);
+void dispTopWindow(void);
+int selectMode(void);
+void mode1(void);
+void mode2(void);
+void wait(void);
+int beki(int, int);
+int isDecimalElements(char);
 //  void toBinary(int, char[]);
  
  // main関数
