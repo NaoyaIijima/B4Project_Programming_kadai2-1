@@ -21,31 +21,32 @@
  // main関数
 int main(void)
 {
-    int mode = 0;
+    // int mode = 0;
 
-    while(1)
-    {
-        dispTopWindow();
-        mode = selectMode();
+    // while(1)
+    // {
+    //     dispTopWindow();
+    //     mode = selectMode();
 
-        if(mode==0) // プログラムの終了
-        {
-            exit(1);
-        }
-        else if(mode==1) // 2進数→10進数
-        {
-            system("cls");
-            mode1();
-        }
-        else if(mode==2) // 10進数→2進数
-        {
-            system("cls");
-            mode2();
-        }
+    //     if(mode==0) // プログラムの終了
+    //     {
+    //         exit(1);
+    //     }
+    //     else if(mode==1) // 2進数→10進数
+    //     {
+    //         system("cls");
+    //         mode1();
+    //     }
+    //     else if(mode==2) // 10進数→2進数
+    //     {
+    //         system("cls");
+    //         mode2();
+    //     }
 
-        // 画面のリセット
-        system("cls");
-    }
+    //     // 画面のリセット
+    //     system("cls");
+    // }
+    mode1();
  
     return 0;
 }
@@ -134,7 +135,7 @@ void mode1(void)
         res = 0;
         for (int i=2; i<strlen(str); i++)
         {
-            res = res + beki(2, strlen(str)-i-1);
+            res = res + (str[i]-'0')*beki(2, strlen(str)-i-1);
         }
 
         printf("%d\n", res);
