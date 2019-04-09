@@ -53,8 +53,6 @@ void mode1(void)
         printf("Enter binary number  = ");
 
         scanf("%s", str);
-        // printf("%s\n", str);
-        // printf("%lu\n", strlen(str));
 
         // mode1の終了
         if(strncmp("q", &str[0], 1)==0)
