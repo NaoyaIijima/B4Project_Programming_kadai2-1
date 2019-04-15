@@ -31,6 +31,13 @@ void dispTopWindow(void)
     printf("This program binary number calculator.\n");
     printf("==============================================================\n");
     printf("\n");
+    printf("This can be binary addition, subtraction, multiplication and division.\n");
+    printf("e.g. 0b11+0b01\n");
+    printf("\n");
+    printf("Enter q, if you wanna exit program.\n");
+    // printf("\n");
+    // printf("Please enter the formula.\n");
+    // printf("\n");
 }
 
 
@@ -50,8 +57,9 @@ void mode1(void)
         flag = 0;
 
         // 2進数の入力
-        printf("Enter binary number  = ");
-
+        printf("\n");
+        printf("Please enter the formula.\n");
+        printf("-> ");
         scanf("%s", str);
 
         // mode1の終了
@@ -73,12 +81,12 @@ void mode1(void)
         // フォーマットに従っているのか？
         if(strncmp("0", &str[0], 1)!=0)
         {
-            printf("str[0] Check the formats.\n");
+            printf("Check the formats.\n");
             continue;
         }
         if(strncmp("b", &str[1], 1)!=0)
         {
-            printf("str[1] Check the formats.\n");
+            printf("Check the formats.\n");
             continue;
         }
 
@@ -93,14 +101,14 @@ void mode1(void)
             c++;
         }
 
-        printf("emzansi=%c\n", emzansi);
+        // printf("emzansi=%c\n", emzansi);
 
         if(strncmp("+", &emzansi, 1)!=0 &&
            strncmp("-", &emzansi, 1)!=0 &&
            strncmp("*", &emzansi, 1)!=0 &&
            strncmp("/", &emzansi, 1)!=0)
         {
-            printf("check emzansi.\n");
+             printf("Error of operator!!\n");
             continue;
         }
 
@@ -110,20 +118,18 @@ void mode1(void)
         {
             num1 = num1 + (str[i]-'0')*beki(2, c-i-1);
         }
-        printf("num1=%d\n", num1);
-
-
+        // printf("num1=%d\n", num1);
 
         // オペランド2
         // フォーマットに従っているのか？
         if(strncmp("0", &str[c+1], 1)!=0)
         {
-            printf("str[0] Check the formats.\n");
+            printf("Check the formats.\n");
             continue;
         }
         if(strncmp("b", &str[c+2], 1)!=0)
         {
-            printf("str[1] Check the formats.\n");
+            printf("Check the formats.\n");
             continue;
         }
 
@@ -131,7 +137,7 @@ void mode1(void)
         {
             if(strncmp("0", &str[i], 1)!=0 && strncmp("1", &str[i], 1)!=0)
             {
-                printf("str: Check the formats.\n");
+                printf("Check the formats.\n");
                 flag = 1;
                 continue;
             }
@@ -142,14 +148,14 @@ void mode1(void)
         }
 
         // 2進数から10進数への変換
-        printf("c=%d\n", c);
+        // printf("c=%d\n", c);
         num2 = 0;
         for (int i=c+3; i<strlen(str); i++)
         {
-            printf("%c\n", str[i]);
+            // printf("%c\n", str[i]);
             num2 = num2 + (str[i]-'0')*beki(2, strlen(str)-i-1);
         }
-        printf("num2=%d\n", num2);
+        // printf("num2=%d\n", num2);
 
         switch (emzansi)//演算記号の違いにより数式をつくる//
 		{
@@ -158,15 +164,15 @@ void mode1(void)
 		case '*': res = num1 * num2; break;
 		case '/': if (num2 == 0.0)//ゼロ割の防止//
 		{
-					  printf("Error!\n");
-					  continue;
+            printf("Error of 1 division!!\n");
+            continue;
 		}
-				  res = num1 / num2; break;
+			res = num1 / num2; break;
 		default: 
-            printf("Error!(emzansi)\n");//演算記号がおかしいときにエラーを返す//
+            printf("Error of operator!!\n");//演算記号がおかしいときにエラーを返す//
 			continue;
 		}
-		printf("=%d\n", res);
+		printf("= %d\n", res);
 
     }
 }

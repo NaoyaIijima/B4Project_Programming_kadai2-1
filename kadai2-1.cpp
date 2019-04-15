@@ -29,6 +29,8 @@ void mode1(void)
     int flag;
 
     printf("Enter binary number.\n");
+    printf("The format is 0bxxxx.\n");
+    printf("\n");
     printf("If you wanna exit this mode, enter q.\n");
 
     while(1)
@@ -36,11 +38,10 @@ void mode1(void)
         flag = 0;
 
         // 2進数の入力
+        printf("\n");
         printf("Enter binary number  = ");
 
         scanf("%s", str);
-        printf("%s\n", str);
-        printf("%lu\n", strlen(str));
 
         // mode1の終了
         if(strncmp("q", &str[0], 1)==0)
@@ -52,19 +53,19 @@ void mode1(void)
         // ２文字以下
         if(strlen(str)<=2)
         {
-            printf("Check the formats.\n");
+            printf("Input binary number is too short.\n");
             continue;
         }
 
         // フォーマットに従っているのか？
         if(strncmp("0", &str[0], 1)!=0)
         {
-            printf("str[0] Check the formats.\n");
+            printf("Check the formats.\n");
             continue;
         }
         if(strncmp("b", &str[1], 1)!=0)
         {
-            printf("str[1] Check the formats.\n");
+            printf("Check the formats.\n");
             continue;
         }
         for (int i=2; i<strlen(str); i++)
@@ -73,13 +74,13 @@ void mode1(void)
             {
                 printf("Check the formats.\n");
                 flag = 1;
-                continue;
+                break;
             }
         }
 
         if(flag==1)
         {
-            break;
+            continue;
         }
 
         // 2進数から10進数への変換
@@ -89,7 +90,7 @@ void mode1(void)
             res = res + (str[i]-'0')*beki(2, strlen(str)-i-1);
         }
 
-        printf("%d\n", res);
+        printf("= %d\n", res);
 
     }
 }
