@@ -34,7 +34,7 @@ void dispTopWindow(void)
     printf("This can be binary addition, subtraction, multiplication and division.\n");
     printf("e.g. 0b11+0b01\n");
     printf("\n");
-    printf("Enter q, if you wanna exit program.\n");
+    printf("Enter q, if you wanna exit this program.\n");
     // printf("\n");
     // printf("Please enter the formula.\n");
     // printf("\n");

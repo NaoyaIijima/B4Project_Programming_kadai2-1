@@ -31,7 +31,7 @@ void mode1(void)
     printf("Enter binary number.\n");
     printf("The format is 0bxxxx.\n");
     printf("\n");
-    printf("If you wanna exit this mode, enter q.\n");
+    printf("Enter q, if you wanna exit this program.\n");
 
     while(1)
     {
